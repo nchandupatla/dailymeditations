@@ -1,0 +1,49 @@
+<div class="row justify-content-md-center mt-5">
+    <div class="col-sm">
+    </div>
+    <div class="col-sm">
+      <form>
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Practice Duration</label>
+          <select (change)="timerChangeHandler($event)" [value]="selected" class="form-control form-control-lg" id="exampleFormControlSelect1">
+            <option *ngFor="let value of timerValues" [value]="value.value">{{value.viewValue}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Meditation Music</label>
+          <select (change)="musicChangeHandler($event)" class="form-control form-control-lg" id="exampleFormControlSelect1">
+            <option *ngFor="let value of audioValues" [value]="value.value">{{value.viewValue}}</option>
+          </select>
+        </div>
+        <!-- <div class="form-group">
+          <label for="exampleFormControlSelect1">Volume {{volume*100}}%</label><br>
+          <mv-slider class="form-control form-control-lg" [(value)]="volume" [min]="0" [max]="1" [step]="0.1" [enabled]="true" (change)="volumeChange()"></mv-slider>
+        </div> -->
+      </form>
+    </div>
+    <div class="col-sm">
+    </div>
+  </div>
+  <div class="jumbotron mt-2">
+    <div class="row">
+    <div class="col-sm-4 offset-sm-4">
+        <h1 class="display-3" class="custom-font">{{timer}}</h1>
+        <a class="btn btn-success btn-lg" href="#" role="button" (click)=start() *ngIf="!inProgress || isFinished">Start</a>
+        <a class="btn btn-danger btn-lg" href="#" role="button" (click)=stop()  *ngIf="inProgress && !isFinished">Stop</a>
+      </div>
+    </div>
+  </div>
+
+  <!--audio -->
+<div *ngIf="inProgress && !isFinished" style="display: none;">
+    <audio autoplay loop>
+      <source [src]="audioUrl" type="audio/mpeg" />
+    </audio>
+  </div>
+  
+  <div *ngIf="isFinished" style="display: none;">
+    <audio autoplay>
+      <source [src]="finishAudioUrl" type="audio/wav" />
+    </audio>
+  </div>
+  <!--audio -->

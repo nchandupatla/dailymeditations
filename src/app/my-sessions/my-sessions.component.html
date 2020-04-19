@@ -1,0 +1,18 @@
+<p>My Previous sessions history</p>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">Date and Time</th>
+    <th scope="col">Mins Meditated</th>
+    <th scope="col">Mins Planned</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let session of sessions">
+    <th scope="row">{{ session.date |  date:'medium' }}</th>
+    <th scope="row">{{ session.minsActual }}</th>
+    <th scope="row">{{ session.minsExpected }}</th>
+  </tr>
+  </tbody>
+</table>

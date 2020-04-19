@@ -2,7 +2,7 @@
 <div class="main">
   <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand">
+      <a class="navbar-brand" routerLink="/">
          <!-- <p class="custom-font">Daily <br><fa-icon [icon]="faSun"></fa-icon> Meditations</p> -->
          <p class="custom-font">Daily <br> Meditations</p>
       </a>
@@ -10,47 +10,27 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/sessions"></a>
+          </li>
+        </ul>
         <form class="form-inline">
-          <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Settings</button>
-          <button class="btn btn-outline-success ml-4 my-2 my-sm-0" type="submit">History</button>
+          <!-- <button class="btn btn-outline-success my-2 my-sm-0 mr-2" type="submit">My Sessions</button>
+          <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">How to download on phone</button> -->
+          <a class="btn btn-outline-success my-2 my-sm-0 mr-2" routerLink="/sessions" routerLinkActive="active">My Sessions</a>
+          <a class="btn btn-outline-success my-2 my-sm-0" routerLink="/download" routerLinkActive="active">How to download on phone</a>
         </form>
       </div>
     </nav>
-    <div class="row justify-content-md-center mt-5">
-      <div class="col-sm">
-      </div>
-      <div class="col-sm">
-        <form>
-          <div class="form-group">
-            <label for="exampleFormControlSelect1">Practice Duration</label>
-            <select (change)="timerChangeHandler($event)" [value]="selected" class="form-control form-control-lg" id="exampleFormControlSelect1">
-              <option *ngFor="let value of timerValues" [value]="value.value">{{value.viewValue}}</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="exampleFormControlSelect1">Meditation Music</label>
-            <select (change)="musicChangeHandler($event)" class="form-control form-control-lg" id="exampleFormControlSelect1">
-              <option *ngFor="let value of audioValues" [value]="value.value">{{value.viewValue}}</option>
-            </select>
-          </div>
-        </form>
-        <button class="btn btn-primary mb-2" (click)=start() *ngIf="!inProgress || isFinished">Start</button>
-        <button class="btn btn-secondary mb-2" (click)=stop()  *ngIf="inProgress && !isFinished">Stop</button>
-
-      </div>
-      <div class="col-sm">
-      </div>
-    </div>
-    <div class="jumbotron mt-2">
-      <div class="row">
-      <div class="col-sm-4 offset-sm-4">
-          <h1 class="display-3" class="custom-font">{{timer}}</h1>
-          <a class="btn btn-primary btn-lg" href="#" role="button" (click)=reset()>Reset</a>
-        </div>
-      </div>
-    </div>
+    <p>
+      <ngb-alert [dismissible]="true" *ngIf="updateAvailable">
+        <strong>Update!</strong> Newer version is available.
+      </ngb-alert>
+    </p>
+    <router-outlet></router-outlet>
   </div>
-  <div class="row">
+  <div class="row footer navbar-fixed-bottom">
     <div class="col-sm-4 offset-sm-4">
     <blockquote class="blockquote mb-0 ml-2">
  <p class="text-white custom-font">Meditation is the process of understanding your own mind.</p>
@@ -60,16 +40,4 @@
  </div>
 </div>
 
-<!--audio -->
-<div *ngIf="inProgress && !isFinished" style="display: none;">
-  <audio autoplay loop>
-    <source [src]="audioUrl" type="audio/mpeg" />
-  </audio>
-</div>
 
-<div *ngIf="isFinished" style="display: none;">
-  <audio autoplay>
-    <source [src]="finishAudioUrl" type="audio/wav" />
-  </audio>
-</div>
-<!--audio -->

@@ -8,12 +8,16 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-
-
-
+import { NgxBootstrapSliderModule } from 'ngx-bootstrap-slider';
+import { HomeComponent } from './home/home.component';
+import { HowToDownloadComponent } from './how-to-download/how-to-download.component';
+import { MySessionsComponent } from './my-sessions/my-sessions.component';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    HowToDownloadComponent,
+    MySessionsComponent
   ],
   imports: [
     BrowserModule,
@@ -21,6 +25,7 @@ import { environment } from '../environments/environment';
     NgbModule,
     FontAwesomeModule,
     FormsModule,
+    NgxBootstrapSliderModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],

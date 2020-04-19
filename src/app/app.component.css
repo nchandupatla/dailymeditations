@@ -1,14 +1,10 @@
 .main {
-    background:url(../assets/sky-unsplash.jpg) no-repeat !important;
-    padding-bottom:100px;
-    background-size:cover;
-    font-family: 'Montserrat Alternates', sans-serif;
-  }
-  
-  .navbar, #first-jumbo  {
-    background: transparent !important;
-  }
+  background:url(../assets/sky-unsplash.jpg) no-repeat !important;
+  padding-bottom:100px;
+  background-size:cover;
+  font-family: 'Montserrat Alternates', sans-serif;
+}
 
-  .custom-font {
-    font-family: 'Montserrat Alternates', sans-serif;
-  }
+.navbar, #first-jumbo  {
+  background: transparent !important;
+}

@@ -25,9 +25,12 @@
               "src/manifest.webmanifest"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/bootstrap-slider/dist/css/bootstrap-slider.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/bootstrap-slider/dist/bootstrap-slider.min.js"
+            ]
           },
           "configurations": {
             "production": {
